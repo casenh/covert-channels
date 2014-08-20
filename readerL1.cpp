@@ -75,7 +75,8 @@ long long int getTime(void){
 
 
 /* The program initializes everything required for PAPI and dlib, and then probes
- * the L1 Cache for a given number of 
+ * the L1 Cache for a given number of samples. 
+ */
 int NUM_OF_SETS = 0;
 int BLOCK_LENGTH = 0;
 int WAYS_ASSOCIATIVE = 0;
