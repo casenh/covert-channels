@@ -1,4 +1,4 @@
 covert-channels
 ===============
 
-Repository describing covert channels research
+Repository describing covert channels research.
