@@ -1,7 +1,7 @@
 covert-channels
 ===============
 
-Check out the Wiki or my [website](www.casenhunger.com) for more info!
+Check out the Wiki or my [website](http://www.casenhunger.com) for more info!
 
 This repository is for constructing covert channels and measuring their throughput
 between processes and Virtual Machines. 
