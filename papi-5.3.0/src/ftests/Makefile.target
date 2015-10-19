@@ -1,0 +1,18 @@
+# File: ftests/Makefile
+# CVS:  $Id$
+prefix = /usr/local
+exec_prefix = ${prefix}
+PACKAGE_TARNAME = papi
+datadir = ${prefix}/share/${PACKAGE_TARNAME}
+testlibdir = $(datadir)/testlib
+INCLUDE = -I. -I${prefix}/include -I$(testlibdir)
+LIBDIR  = ${exec_prefix}/lib
+PAPILIB = $(LIBDIR)/libpapi.a
+TESTLIB = $(testlibdir)/libtestlib.a
+LDFLAGS = 
+CC	= gcc
+F77	= @echo nof77 
+CC_R	= $(CC) -pthread
+CFLAGS	= -DNEED_FFSLL 
+OMPCFLGS = -fopenmp
+FFLAGS	=   -Dlinux -Wall -ffixed-line-length-132

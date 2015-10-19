@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+
+import subprocess
+from subprocess import call
+import time
+
+data = [
+    #Period, Reader, Sender
+    "23000", "6000", "6000",
+    "22000", "6000", "6000",
+    "21000", "6000", "6000",
+    "20000", "6000", "6000",
+    "19000", "6000", "6000",
+    "18000", "6000", "6000",
+    "17000", "6000", "6000",
+    "16000", "6000", "6000",
+    "15000", "6000", "6000",
+    "14000", "6000", "6000",
+    "13000", "6000", "6000",
+    "12000", "6000", "6000",
+    "11000", "6000", "6000",
+    "10000", "6000", "6000",
+    "9000", "6000", "6000",
+    "8000", "6000", "6000",
+    "7000", "6000", "6000",
+    "6000", "5500", "5500",
+    
+    ]
+
+if __name__ == '__main__':
+	for n in range(0,18):
+		for i in range(0, 1): #Run the test 10 times
+		    reader = subprocess.Popen(['taskset', '-c', '0', '../src/readerStore', data[n*3], data[(n*3)+1]], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+		    sender = subprocess.Popen(['taskset', '-c', '4', '../src/senderStore', data[n*3], data[(n*3)+2]], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+		    while True:
+			senderOutput = sender.stdout.readline()
+			if senderOutput != None:
+			    break
+		    print senderOutput
+		    reader.stdin.write(senderOutput)
+		    sender.stdin.write("Start\n")
+		    sender.wait()
+		    reader.wait()
+		    time.sleep(1)
+		call(["../src/checker"])
+		call(["rm", "-r", "../data/"])
+		call(["mkdir", "../data/"])

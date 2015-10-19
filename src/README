@@ -1,0 +1,24 @@
+This is the code for communicating across covert channels within the computer. Currently, we can communicate across
+the L1, L2, and L3 cache, branch prediction, and load/store instructions.
+
+/******** Compiling *********/
+
+1) run configure.sh
+2) run make
+
+
+
+/******** Running **********/
+
+For each channel of communication, there is an associated python script in the ./run/ folder. Change to the folder, and
+run the scprit to initiate communication. The channel will communicate 10 times, and the number of bits sent each time 
+will be displayed. After each round of communication, the results are stored in ./data/. Once the ten rounds have completed, 
+the results are analyzed and percentages of bit flips are calulated. These results are stored in the 'TestResults' file in
+the ./data/ folder.
+
+
+/******* IMPORTANT NOTE *******/
+
+For each channel for communication, you still need to specify which cores you want the sender and receiver to run on. This is easily done
+by editing the python script in ./run/ for the channel, and replacing the core number in the taskset done. I will automate this soon, 
+just trying to get virtualization working now.

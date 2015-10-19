@@ -1,0 +1,207 @@
+600
+Average accuracy: 0.64093
+Transition matrix:   
+1 -> 1 0.45241
+1 -> 0 0.54759
+0 -> 0 0.8314
+0 -> 1 0.1686
+ 
+700
+Average accuracy: 0.80515
+Transition matrix:   
+1 -> 1 0.72313
+1 -> 0 0.27687
+0 -> 0 0.88681
+0 -> 1 0.11319
+ 
+800
+Average accuracy: 0.83166
+Transition matrix:   
+1 -> 1 0.74932
+1 -> 0 0.25068
+0 -> 0 0.91387
+0 -> 1 0.086131
+ 
+900
+Average accuracy: 0.88792
+Transition matrix:   
+1 -> 1 0.82596
+1 -> 0 0.17404
+0 -> 0 0.94995
+0 -> 1 0.050051
+ 
+1000
+Average accuracy: 0.90163
+Transition matrix:   
+1 -> 1 0.83334
+1 -> 0 0.16666
+0 -> 0 0.96989
+0 -> 1 0.030111
+ 
+1100
+Average accuracy: 0.90866
+Transition matrix:   
+1 -> 1 0.89561
+1 -> 0 0.10439
+0 -> 0 0.92174
+0 -> 1 0.078263
+ 
+1200
+Average accuracy: 0.94004
+Transition matrix:   
+1 -> 1 0.91368
+1 -> 0 0.08632
+0 -> 0 0.96622
+0 -> 1 0.033775
+ 
+1300
+Average accuracy: 0.87787
+Transition matrix:   
+1 -> 1 0.86202
+1 -> 0 0.13798
+0 -> 0 0.89377
+0 -> 1 0.10623
+ 
+1400
+Average accuracy: 0.91703
+Transition matrix:   
+1 -> 1 0.90243
+1 -> 0 0.09757
+0 -> 0 0.93169
+0 -> 1 0.068313
+ 
+1600
+Average accuracy: 0.74611
+Transition matrix:   
+1 -> 1 0.56161
+1 -> 0 0.43839
+0 -> 0 0.93009
+0 -> 1 0.069913
+ 
+1700
+Average accuracy: 0.90359
+Transition matrix:   
+1 -> 1 0.879
+1 -> 0 0.121
+0 -> 0 0.92809
+0 -> 1 0.071911
+ 
+1800
+Average accuracy: 0.9179
+Transition matrix:   
+1 -> 1 0.89357
+1 -> 0 0.10643
+0 -> 0 0.94213
+0 -> 1 0.057865
+ 
+2000
+Average accuracy: 0.9401
+Transition matrix:   
+1 -> 1 0.92141
+1 -> 0 0.078586
+0 -> 0 0.95882
+0 -> 1 0.041178
+ 
+3000
+Average accuracy: 0.91365
+Transition matrix:   
+1 -> 1 0.89929
+1 -> 0 0.10071
+0 -> 0 0.92799
+0 -> 1 0.07201
+ 
+3500
+Average accuracy: 0.95457
+Transition matrix:   
+1 -> 1 0.94902
+1 -> 0 0.050983
+0 -> 0 0.96004
+0 -> 1 0.039962
+ 
+5000
+Average accuracy: 0.97231
+Transition matrix:   
+1 -> 1 0.96469
+1 -> 0 0.035315
+0 -> 0 0.97984
+0 -> 1 0.020158
+ 
+10000
+Average accuracy: 0.90983
+Transition matrix:   
+1 -> 1 0.90223
+1 -> 0 0.097765
+0 -> 0 0.9175
+0 -> 1 0.082503
+ 
+15000
+Average accuracy: 0.96065
+Transition matrix:   
+1 -> 1 0.96143
+1 -> 0 0.03857
+0 -> 0 0.95986
+0 -> 1 0.040145
+ 
+20000
+Average accuracy: 0.96508
+Transition matrix:   
+1 -> 1 0.95974
+1 -> 0 0.040259
+0 -> 0 0.97039
+0 -> 1 0.029607
+ 
+25000
+Average accuracy: 0.96903
+Transition matrix:   
+1 -> 1 0.96656
+1 -> 0 0.033437
+0 -> 0 0.97146
+0 -> 1 0.028536
+ 
+35000
+Average accuracy: 0.98513
+Transition matrix:   
+1 -> 1 0.98699
+1 -> 0 0.013015
+0 -> 0 0.98327
+0 -> 1 0.016733
+ 
+50000
+Average accuracy: 0.98699
+Transition matrix:   
+1 -> 1 0.98724
+1 -> 0 0.012762
+0 -> 0 0.98673
+0 -> 1 0.013272
+ 
+100000
+Average accuracy: 0.99271
+Transition matrix:   
+1 -> 1 0.99715
+1 -> 0 0.0028526
+0 -> 0 0.98831
+0 -> 1 0.011691
+ 
+200000
+Average accuracy: 0.98941
+Transition matrix:   
+1 -> 1 0.99634
+1 -> 0 0.0036623
+0 -> 0 0.98242
+0 -> 1 0.017578
+ 
+500000
+Average accuracy: 0.99896
+Transition matrix:   
+1 -> 1 0.99807
+1 -> 0 0.0019346
+0 -> 0 0.99985
+0 -> 1 0.00014652
+ 
+1000000
+Average accuracy: 0.99972
+Transition matrix:   
+1 -> 1 0.99953
+1 -> 0 0.00046611
+0 -> 0 0.99991
+0 -> 1 9.3363e-05

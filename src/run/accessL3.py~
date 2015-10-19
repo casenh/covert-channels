@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+
+import subprocess
+from subprocess import call
+import time
+
+data = [
+    #Period, primeTime, readerWait, sendLength
+    "40000", "18000", "18000", "18000",
+    "39000", "18000", "18000", "18000",
+    "38000", "16000", "16000", "16000",
+    "37000", "15000", "15000", "15000",
+    "36000", "15000", "15000", "15000",
+    "35000", "15000", "15000", "15000",
+    "34000", "15000", "15000", "15000",
+    "33000", "15000", "15000", "15000",
+    "32000", "15000", "15000", "15000",
+    "31000", "14000", "15000", "15000",
+    "30000", "13000", "15000", "15000",
+    "29000", "12000", "15000", "15000",
+    "28000", "11000", "15000", "15000",
+    "27000", "11000", "14000", "14000",
+    "26000", "11000", "13000", "13000",
+    "25000", "11000", "12000", "12000",
+    "24000", "10000", "12000", "12000",
+    "23000", "9000", "12000", "12000",
+    "22000", "9000", "11000", "11000",
+    "21000", "9000", "10000", "10000",
+    "20000", "9000", "9000", "9000",
+    ]
+
+NUM_OF_PAGES = 180    
+    
+if __name__ == '__main__':
+	for n in range(0, 21):
+	    for i in range(0, 10): 
+		#Start the threads on the same core so the handshake can be carried out
+		reader = subprocess.Popen(['taskset', '-c', '0', '../src/accessL3_receiver', data[n*4], data[(n*4)+1], data[(n*4)+2]], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+		sender = subprocess.Popen(['taskset', '-c', '1', '../src/accessL3_sender', data[n*4], data[(n*4)+1], data[(n*4)+3]], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+		# Read indices from the reader
+		print "Handshake Beginning..."
+		for i in range(0,NUM_OF_PAGES):
+		    index = reader.stdout.readline()
+		    #sys.stdout.write(index)
+		    sender.stdin.write(index + '\n')
+		# Read recieved indices from sender
+		#for i in range(0,NUM_OF_PAGES):
+		    #senderOut = sender.stdout.readline()
+		    #sys.stdout.write(senderOut)
+		# Switch the sender over to another processing core to complete handshake
+		pid = sender.stdout.readline()
+		newStr = pid[:len(pid)-1]
+		contextSwitch = subprocess.Popen(['taskset', '-p', '-c', '2', newStr], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+		contextSwitch.wait()
+		#Now begin acutual communication
+		print "Handshake Completed"
+		reader.stdin.write("Start\n")
+		sender.stdin.write("Start\n")
+		while True:
+		    senderOutput = sender.stdout.readline() #Wait for the sender to communicate how many bits it will send
+		    if senderOutput != None:
+			break
+		print senderOutput
+		reader.stdin.write(senderOutput) #Let the reader know
+		while True:
+		    readerOutput = reader.stdout.readline() #Wait for the reader signal
+		    if readerOutput != None:
+			break
+		sender.stdin.write("Start\n") #Let the sender know
+		sender.wait()
+		reader.wait()
+		time.sleep(1)
+	    call(["../src/checker"])
+	    call(["rm", "-r", "../data/"])
+	    call(["mkdir", "../data/"])

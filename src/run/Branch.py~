@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+
+import subprocess
+from subprocess import call
+import time
+
+# The Period length, reader wait time, sender send time
+data = [
+    "20000", "5000", "5000",
+    "19000", "5000", "5000",
+    "18000", "5000", "5000",
+    "17000", "5000", "5000",
+    "16000", "5000", "5000",
+    "15000", "5000", "5000",
+    "14000", "5000", "5000",
+    "13000", "5000", "5000",
+    "12000", "5000", "5000",
+    "11000", "5000", "5000",
+    "10000", "4000", "4000",
+    "9000", "4000", "4000",
+    "8000", "4000", "4000",
+    "7000", "3000", "3000",
+    "6000", "3000", "3000",
+    "5000", "3000", "3000",
+    "4000", "5000", "5000",
+    ]
+
+if __name__ == '__main__':
+	for n in range(0, 17):
+		for i in range(0, 10): #Run the test 10 times
+		    reader = subprocess.Popen(['taskset', '-c', '0', '../src/readerBranch', data[n*3], data[(n*4)+1]], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+		    sender = subprocess.Popen(['taskset', '-c', '4', '../src/senderBranch', data[n*3], data[(n*3)+2]], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+		    while True:
+			senderOutput = sender.stdout.readline()
+			if senderOutput != None:
+			    break
+		    print senderOutput
+		    reader.stdin.write(senderOutput)
+		    sender.stdin.write("Start\n")
+		    sender.wait()
+		    reader.wait()
+		    time.sleep(1)
+		call(["../src/checker"])
+		call(["rm", "-r", "../data/"])
+		call(["mkdir", "../data/"])
